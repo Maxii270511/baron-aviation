@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baron Aviation Service | Maintenance Tracking & Consulting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; }
+        .gold-accent { color: #c5a059; }
+        .bg-gold { background-color: #c5a059; }
+        .btn-interact { transition: all 0.3s ease; transform: translateY(0); }
+        .btn-interact:hover { transform: translateY(-2px); box-shadow: 0 10px 15px rgba(0,0,0,0.3); }
+        .dropdown-menu { display: none; position: absolute; background: white; min-width: 180px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); z-index: 100; top: 100%; right: 0; border: 1px solid #f1f5f9; }
+        .dropdown-menu.show { display: block; animation: fadeIn 0.2s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <nav class="flex items-center justify-between px-8 py-6 bg-white shadow-sm sticky top-0 z-50">
+        <div class="text-2xl font-semibold tracking-tighter uppercase italic cursor-pointer" onclick="window.scrollTo(0,0)">
+            Baron <span class="gold-accent">Aviation</span>
+        </div>
+        
+        <div class="hidden md:flex items-center space-x-8 font-medium text-sm uppercase tracking-widest">
+            <div class="relative">
+                <button onclick="toggleLang()" class="flex items-center space-x-2 p-2 hover:bg-slate-50 rounded transition border border-transparent hover:border-slate-200">
+                    <span id="current-lang-label">🇩🇪 DE</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                </button>
+                <div id="lang-menu" class="dropdown-menu mt-2">
+                    <button onclick="setLanguage('de', '🇩🇪 DE')" class="w-full text-left px-4 py-3 hover:bg-slate-50 border-b border-slate-50">🇩🇪 Deutsch</button>
+                    <button onclick="setLanguage('en', '🇺🇸 EN')" class="w-full text-left px-4 py-3 hover:bg-slate-50 border-b border-slate-50">🇺🇸 English</button>
+                    <button onclick="setLanguage('es', '🇪🇸 ES')" class="w-full text-left px-4 py-3 hover:bg-slate-50 border-b border-slate-50">🇪🇸 Español</button>
+                    <button onclick="setLanguage('ru', '🇷🇺 RU')" class="w-full text-left px-4 py-3 hover:bg-slate-50 border-b border-slate-50">🇷🇺 Русский</button>
+                    <button onclick="setLanguage('zh', '🇨🇳 CN')" class="w-full text-left px-4 py-3 hover:bg-slate-50">🇨🇳 中文</button>
+                </div>
+            </div>
+
+            <a href="#services" data-key="nav-maint" class="hover:text-amber-600 transition">Maintenance</a>
+            <a href="#services" data-key="nav-cons" class="hover:text-amber-600 transition">Consulting</a>
+            <a href="#contact" data-key="nav-contact" class="hover:text-amber-600 transition">Kontakt</a>
+            
+            <button onclick="alert('Staff Access: Authentication required.')" class="btn-interact bg-slate-900 text-white px-5 py-2 rounded-sm hover:bg-slate-800 transition shadow-lg">
+                Staff Login
+            </button>
+        </div>
+    </nav>
+
+    <header class="relative h-[85vh] flex items-center justify-center bg-slate-900 text-white overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1540962351504-03099e0a754b?q=80&w=2000&auto=format&fit=crop" 
+                 alt="Private Jet" 
+                 class="w-full h-full object-cover opacity-60 scale-105 transform transition duration-[10s] hover:scale-100">
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-slate-900/50"></div>
+        </div>
+        
+        <div class="relative z-10 text-center max-w-4xl px-4">
+            <h1 data-key="hero-title" class="text-5xl md:text-7xl font-light mb-6 tracking-tight drop-shadow-2xl">Präzision in der <br><span class="italic text-slate-200">Dritten Dimension</span></h1>
+            <p data-key="hero-sub" class="text-lg md:text-xl text-slate-200 mb-10 font-light max-w-2xl mx-auto leading-relaxed drop-shadow-md">
+                Digitales Wartungstracking und strategisches Consulting für anspruchsvolle Flugzeugeigentümer weltweit.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="#services" data-key="hero-btn1" class="btn-interact bg-gold text-white px-10 py-4 rounded-sm font-semibold text-center uppercase tracking-widest text-sm shadow-xl">Unsere Services</a>
+                <a href="#contact" data-key="hero-btn2" class="btn-interact border border-white px-10 py-4 rounded-sm font-semibold hover:bg-white hover:text-slate-900 transition text-center uppercase tracking-widest text-sm backdrop-blur-sm">Beratung anfordern</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="services" class="py-24 px-8 max-w-7xl mx-auto">
+        <div class="grid md:grid-cols-2 gap-12">
+            <div class="group bg-white p-12 shadow-2xl border-t-4 border-gold transform transition hover:-translate-y-1">
+                <h3 data-key="serv1-title" class="text-2xl font-semibold mb-4 text-slate-800">Maintenance Tracking</h3>
+                <p data-key="serv1-text" class="text-slate-600 leading-relaxed text-lg">Vollautomatische Überwachung aller Bauteile, Fristen und Inspektionen. Maximale Sicherheit durch Echtzeit-Daten.</p>
+            </div>
+            <div class="group bg-white p-12 shadow-2xl border-t-4 border-slate-900 transform transition hover:-translate-y-1">
+                <h3 data-key="serv2-title" class="text-2xl font-semibold mb-4 text-slate-800">Aviation Consulting</h3>
+                <p data-key="serv2-text" class="text-slate-600 leading-relaxed text-lg">Strategische Beratung für Transaktionen und Flottensteuerung. Wir optimieren Ihre Effizienz weltweit.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="bg-slate-900 py-24 px-8 text-white">
+        <div class="max-w-xl mx-auto">
+            <h2 data-key="contact-title" class="text-4xl font-light mb-8 text-center tracking-wide">Kontaktieren Sie uns</h2>
+            <form action="https://formspree.io/f/mkoqqend" method="POST" class="space-y-6">
+                <input type="text" name="name" data-key="form-name" placeholder="Name" required class="w-full bg-slate-800 border border-slate-700 p-4 rounded text-white focus:outline-none focus:border-gold transition">
+                <input type="email" name="email" data-key="form-email" placeholder="E-Mail" required class="w-full bg-slate-800 border border-slate-700 p-4 rounded text-white focus:outline-none focus:border-gold transition">
+                <textarea name="message" data-key="form-msg" placeholder="Ihre Nachricht" rows="4" class="w-full bg-slate-800 border border-slate-700 p-4 rounded text-white focus:outline-none focus:border-gold transition"></textarea>
+                <button type="submit" data-key="form-btn" class="btn-interact w-full bg-gold py-5 font-bold uppercase tracking-widest text-sm shadow-2xl">Anfrage Senden</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-white text-center text-slate-400 text-xs uppercase tracking-[0.3em] font-medium border-t border-slate-100">
+        &copy; 2026 Baron Aviation Service | GLOBAL NETWORK SOLUTIONS
+    </footer>
+
+    <script>
+        const translations = {
+            'de': {
+                'nav-maint': 'Maintenance', 'nav-cons': 'Consulting', 'nav-contact': 'Kontakt',
+                'hero-title': 'Präzision in der Dritten Dimension',
+                'hero-sub': 'Digitales Wartungstracking und strategisches Consulting für anspruchsvolle Flugzeugeigentümer weltweit.',
+                'hero-btn1': 'Unsere Services', 'hero-btn2': 'Beratung anfordern',
+                'serv1-title': 'Maintenance Tracking', 'serv1-text': 'Vollautomatische Überwachung aller Bauteile, Fristen und Inspektionen. Maximale Sicherheit durch Echtzeit-Daten.',
+                'serv2-title': 'Aviation Consulting', 'serv2-text': 'Strategische Beratung für Transaktionen und Flottensteuerung. Wir optimieren Ihre Effizienz weltweit.',
+                'contact-title': 'Kontaktieren Sie uns', 'form-name': 'Name', 'form-email': 'E-Mail', 'form-msg': 'Ihre Nachricht', 'form-btn': 'Anfrage Senden'
+            },
+            'en': {
+                'nav-maint': 'Maintenance', 'nav-cons': 'Consulting', 'nav-contact': 'Contact',
+                'hero-title': 'Precision in the Third Dimension',
+                'hero-sub': 'Digital maintenance tracking and strategic consulting for sophisticated aircraft owners worldwide.',
+                'hero-btn1': 'Our Services', 'hero-btn2': 'Request Consultation',
+                'serv1-title': 'Maintenance Tracking', 'serv1-text': 'Automated monitoring of all components and inspections. Maximum safety through real-time data.',
+                'serv2-title': 'Aviation Consulting', 'serv2-text': 'Strategic advice for transactions and fleet management. We optimize your efficiency worldwide.',
+                'contact-title': 'Contact Us', 'form-name': 'Name', 'form-email': 'Email', 'form-msg': 'Your Message', 'form-btn': 'Send Inquiry'
+            },
+            'es': {
+                'nav-maint': 'Mantenimiento', 'nav-cons': 'Consultoría', 'nav-contact': 'Contacto',
+                'hero-title': 'Precisión en la Tercera Dimensión',
+                'hero-sub': 'Seguimiento digital de mantenimiento y consultoría estratégica para propietarios de aeronaves.',
+                'hero-btn1': 'Servicios', 'hero-btn2': 'Solicitar consulta',
+                'contact-title': 'Contáctenos', 'form-btn': 'Enviar solicitud'
+            },
+            'ru': {
+                'nav-maint': 'Обслуживание', 'nav-cons': 'Консалтинг', 'nav-contact': 'Контакт',
+                'hero-title': 'Точность в третьем измерении',
+                'hero-sub': 'Цифровое отслеживание технического обслуживания и стратегический консалтинг.',
+                'hero-btn1': 'Услуги', 'hero-btn2': 'Запросить консультацию',
+                'contact-title': 'Свяжитесь с нами', 'form-btn': 'Отправить запрос'
+            },
+            'zh': {
+                'nav-maint': '维护', 'nav-cons': '咨询', 'nav-contact': '联系',
+                'hero-title': '第三维度的精度',
+                'hero-sub': '为全球飞机所有者提供数字化维护跟踪和战略咨询。',
+                'hero-btn1': '我们的服务', 'hero-btn2': '请求咨询',
+                'contact-title': '联系我们', 'form-btn': '发送请求'
+            }
+        };
+
+        function toggleLang() { document.getElementById('lang-menu').classList.toggle('show'); }
+
+        function setLanguage(lang, label) {
+            const keys = document.querySelectorAll('[data-key]');
+            keys.forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                        el.placeholder = translations[lang][key];
+                    } else {
+                        el.innerHTML = translations[lang][key];
+                    }
+                }
+            });
+            document.getElementById('current-lang-label').innerText = label;
+            document.getElementById('lang-menu').classList.remove('show');
+        }
+
+        window.onclick = function(e) { if (!e.target.closest('.relative')) document.getElementById('lang-menu').classList.remove('show'); }
+    </script>
+</body>
+</html>
